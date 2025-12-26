@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Na4lenax Grok Unlocked</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <style>
+        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; }
+        #output { height: 400px; overflow-y: auto; border: 1px solid #0f0; padding: 10px; margin-bottom: 10px; background: #050505; }
+        input { width: 80%; background: #000; border: 1px solid #0f0; color: #0f0; padding: 10px; }
+        button { background: #0f0; color: #000; border: none; padding: 10px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>GROK 4.1 UNLIMITED BY NA4LENAX</h2>
+    <div id="output"></div>
+    <input type="text" id="prompt" placeholder="Пиши сюда...">
+    <button onclick="ask()">SEND</button>
+
+    <script>
+        const out = document.getElementById('output');
+        async function ask() {
+            const input = document.getElementById('prompt');
+            const text = input.value;
+            out.innerHTML += `<div><b>YOU:</b> ${text}</div>`;
+            input.value = '';
+            
+            try {
+                // Принудительная инициализация и вызов
+                const resp = await puter.ai.chat(text, {model: 'grok-beta'}); 
+                out.innerHTML += `<div><b>GROK:</b> ${resp}</div><hr>`;
+            } catch (e) {
+                out.innerHTML += `<div style="color:red">Ошибка: Открой файл через VS Code Live Server или любой локальный хост.</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
